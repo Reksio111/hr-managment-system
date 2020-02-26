@@ -2,13 +2,14 @@ package com.amazingsoftwarecompany.hrmanagement;
 
 public class Department {
 
+	private static int id = 0;
 	private int departmentId;
 	private String departmentName;
 	private int numberOfEmployees;
 
-	public Department(int departmentId, String departmentName, int numberOfEmployees) {
+	public Department(String departmentName, int numberOfEmployees) {
 		super();
-		this.departmentId = departmentId;
+		this.departmentId = ++id;
 		this.departmentName = departmentName;
 		this.numberOfEmployees = numberOfEmployees;
 	}
@@ -31,8 +32,8 @@ public class Department {
 
 	@Override
 	public String toString() {
-		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName
-				+ ", numberOfEmployees=" + numberOfEmployees + "]";
+		return "Department: " + departmentId + "\nDepartmentName: " + departmentName + "\nNumberOfEmployees: "
+				+ numberOfEmployees + "\n";
 	}
 
 	@Override
