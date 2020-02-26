@@ -39,7 +39,7 @@ public class Name {
 
 	@Override
 	public String toString() {
-		return "Name [title=" + title + ", fname=" + fname + ", lname=" + lname + "]";
+		return  title + " " + fname + " " + lname ;
 	}
 
 	public boolean equals(Name name) {
