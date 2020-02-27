@@ -27,6 +27,7 @@ public class Department {
 	}
 
 	public int getNumberOfEmployees() {
+		System.out.print("number of employees in the department is: ");
 		return numberOfEmployees;
 	}
 
