@@ -15,12 +15,11 @@ public class Manager extends Employee {
 	@Override
 	public double weeklyPay(double bonus) {
 		return monthlySalary = ((monthlySalary / 100) * bonus) + monthlySalary;
-
 	}
 
 	@Override
 	public String toString() {
-		return "monthlySalary: " + monthlySalary + "\nbonus=" + bonus + "\n";
+		return "Manager \n" + super.toString() + "\nMonthly Salary: " + monthlySalary + "\nBonus: " + bonus + "\n";
 	}
 
 	@Override
