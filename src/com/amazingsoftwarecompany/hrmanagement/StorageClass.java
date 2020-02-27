@@ -11,6 +11,7 @@ public class StorageClass {
 	private List<Employee> employees = new ArrayList<Employee>();
 
 	public void getDepartments() {
+		departments();
 		for (Department d : departments) {
 			System.out.println(d);
 		}
@@ -22,8 +23,17 @@ public class StorageClass {
 		}
 	}
 
-	public void addDepartment(Department d) {
-		departments.add(d);
+	public List<Department> departments() {
+
+		Department development = new Department("software design", 0);
+		Department QA = new Department("quality & assurance", 0);
+		Department devops = new Department("devops", 0);
+
+		departments.add(development);
+		departments.add(QA);
+		departments.add(devops);
+		return departments;
+
 	}
 
 	public void addEmployee(Employee e) {
@@ -50,7 +60,7 @@ public class StorageClass {
 		LocalDate date = LocalDate.now();
 		int day = date.getDayOfMonth();
 		int month = date.getMonthValue();
-		int year = date.getDayOfYear();
+		int year = date.getYear();
 
 		Scanner keyIn = new Scanner(System.in);
 		System.out.println("Ente your details plaese");
