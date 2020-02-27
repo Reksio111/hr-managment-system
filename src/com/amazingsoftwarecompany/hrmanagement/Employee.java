@@ -2,7 +2,7 @@ package com.amazingsoftwarecompany.hrmanagement;
 
 import java.time.LocalDate;
 
-public abstract class Employee {
+public abstract class Employee implements Payable{
 
 	private static int num = 1;
 	private int employeeId;
@@ -19,6 +19,7 @@ public abstract class Employee {
 		this.employeeId = num++;
 	}
 
+	
 	public static int getNum() {
 		return num;
 	}
@@ -67,6 +68,7 @@ public abstract class Employee {
 	public String toString() {
 		return "Employee Id: " + employeeId + "\nName: " + name + "\nDepartment id: " + departmentId
 				+ "\nDate start: " + date + "\nPhone number: " + phoneNumber;
+
 	}
 
 	@Override
