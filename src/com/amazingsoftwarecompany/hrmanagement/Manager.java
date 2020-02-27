@@ -11,15 +11,15 @@ public class Manager extends Employee {
 		this.monthlySalary = monthlySalary;
 		this.bonus = bonus;
 	}
-	
+
 	public double wagesAfterBonus(double bonus) {
-		return monthlySalary = ((monthlySalary / 100) * bonus) + monthlySalary ;
-		
+		return monthlySalary = ((monthlySalary / 100) * bonus) + monthlySalary;
+
 	}
 
 	@Override
 	public String toString() {
-		return "monthlySalary: " + monthlySalary + "\nbonus=" + bonus + "\n";
+		return "Manager \n" + super.toString() + "\nMonthly Salary: " + monthlySalary + "\nBonus: " + bonus + "\n";
 	}
 
 	@Override
