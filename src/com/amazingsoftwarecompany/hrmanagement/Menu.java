@@ -27,10 +27,10 @@ public class Menu {
 			switch (userOption) {
 
 			case 1:
-				storage.getEmployees();
+				storage.displayEmployees();
 				break;
 			case 2:
-				storage.getDepartments();
+				storage.displayDepartments();
 				break;
 			case 3:
 				storage.addNewEmployee();

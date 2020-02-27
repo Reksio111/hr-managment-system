@@ -10,17 +10,19 @@ public class StorageClass {
 	private List<Department> departments = new ArrayList<Department>();;
 	private List<Employee> employees = new ArrayList<Employee>();
 
-	public void getDepartments() {
+	public void displayDepartments() {
 		departments();
 		for (Department d : departments) {
 			System.out.println(d);
 		}
+		System.out.println();
 	}
 
-	public void getEmployees() {
+	public void displayEmployees() {
 		for (Employee e : employees) {
 			System.out.println(e);
 		}
+		System.out.println();
 	}
 
 	public List<Department> departments() {
@@ -46,6 +48,7 @@ public class StorageClass {
 				System.out.println(e);
 			}
 		}
+		System.out.println();
 	}
 
 	public void displayDevelopers() {
@@ -54,6 +57,7 @@ public class StorageClass {
 				System.out.println(e);
 			}
 		}
+		System.out.println();
 	}
 
 	public void addNewEmployee() {
@@ -87,11 +91,12 @@ public class StorageClass {
 			Developer temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
 			employees.add(temp);
 		}
-
+		System.out.println();
 	}
+
 	public void removeEmployee() {
 		Scanner keyIn = new Scanner(System.in);
-		System.out.print("enter employee number:");
+		System.out.print("Enter employee number:");
 		int num = keyIn.nextInt();
 
 		for (int i = 0; i < employees.size(); i++) {
@@ -99,6 +104,9 @@ public class StorageClass {
 				employees.remove(i);
 			}
 		}
-		keyIn.close();
+		for (Employee e : employees) {
+			System.out.println(e);
+		}
+
 	}
 }
