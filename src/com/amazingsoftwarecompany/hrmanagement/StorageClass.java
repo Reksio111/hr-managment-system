@@ -89,4 +89,16 @@ public class StorageClass {
 		}
 
 	}
+	public void removeEmployee() {
+		Scanner keyIn = new Scanner(System.in);
+		System.out.print("enter employee number:");
+		int num = keyIn.nextInt();
+
+		for (int i = 0; i < employees.size(); i++) {
+			if (num == employees.get(i).getNum()) {
+				employees.remove(i);
+			}
+		}
+		keyIn.close();
+	}
 }

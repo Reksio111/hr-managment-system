@@ -20,7 +20,7 @@ public abstract class Employee implements Payable{
 	}
 
 	
-	public static int getNum() {
+	public  int getNum() {
 		return num;
 	}
 

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-	public  void showMenu() {
+	public void showMenu() {
 		StorageClass storage = new StorageClass();
 
 		Scanner sc = new Scanner(System.in);
@@ -39,7 +39,7 @@ public class Menu {
 
 				break;
 			case 5:
-				System.out.println("Deleted employee is: ");
+				storage.removeEmployee();
 				break;
 			case 6:
 				storage.displayManagers();
