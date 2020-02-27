@@ -59,7 +59,7 @@ public class Developer extends Employee {
 
 	@Override
 	public String toString() {
-		return "\nDeveloper " + super.toString() + "\nHourly Rate: " + hourlyRate + "\nLevel:" + devLevel + "\n";
+		return "\nDeveloper\n" + super.toString() + "\nHourly Rate: " + hourlyRate + "\nLevel:" + devLevel + "\n";
 	}
 
 }
