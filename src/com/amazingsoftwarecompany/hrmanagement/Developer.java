@@ -13,6 +13,18 @@ public class Developer extends Employee {
 
 	}
 
+	@Override
+	public double weeklyPay(double hoursWorked) {
+
+		double devolplementRate = devLevel.getRate();
+		if (hoursWorked > 35) {
+			return hoursWorked = (35 * devolplementRate) + ((hoursWorked - 35) * devolplementRate * 1.5);
+		} else {
+			return hoursWorked * devolplementRate;
+		}
+
+	}
+
 	public double getHourlyRate() {
 		return hourlyRate;
 	}
@@ -47,7 +59,7 @@ public class Developer extends Employee {
 
 	@Override
 	public String toString() {
-		return "Developer \n" + super.toString() + "\nHourly Rate: " + hourlyRate + "\nLevel:" + devLevel + "\n";
+		return "\nDeveloper " + super.toString() + "\nHourly Rate: " + hourlyRate + "\nLevel:" + devLevel + "\n";
 	}
 
 }
