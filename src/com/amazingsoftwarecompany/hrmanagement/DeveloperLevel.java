@@ -13,4 +13,8 @@ public enum DeveloperLevel {
 		return this.rate;
 	}
 	
+	public DeveloperLevel getLevel() {
+		return this;
+	}
+	
 }
