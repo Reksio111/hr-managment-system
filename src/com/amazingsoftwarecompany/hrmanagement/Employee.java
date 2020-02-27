@@ -65,7 +65,7 @@ public abstract class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee \nEmployeeId: " + employeeId + "\nName: " + name + "\nDepartment id: " + departmentId
+		return "EmployeeId: " + employeeId + "\nName: " + name + "\nDepartment id: " + departmentId
 				+ "\nDate start: " + date + "\nPhone number: " + phoneNumber;
 	}
 
