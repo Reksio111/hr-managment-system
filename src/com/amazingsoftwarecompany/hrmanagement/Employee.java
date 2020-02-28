@@ -19,11 +19,6 @@ public abstract class Employee implements Payable{
 		this.employeeId = num++;
 	}
 
-	
-	public  int getNum() {
-		return num;
-	}
-
 	public int getEmployeeId() {
 		return employeeId;
 	}
@@ -44,9 +39,6 @@ public abstract class Employee implements Payable{
 		return phoneNumber;
 	}
 
-	public static void setNum(int num) {
-		Employee.num = num;
-	}
 
 	public void setName(Name name) {
 		this.name = name;

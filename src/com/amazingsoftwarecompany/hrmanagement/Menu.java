@@ -36,7 +36,7 @@ public class Menu {
 				storage.addNewEmployee();
 				break;
 			case 4:
-
+				storage.editEmployeeById();
 				break;
 			case 5:
 				storage.removeEmployee();
