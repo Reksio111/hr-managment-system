@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Menu {
 
 	public  void showMenu() {
-		StorageClass storage = new StorageClass();
+		final StorageClass storage = new StorageClass();
 
-		Scanner sc = new Scanner(System.in);
+		final Scanner sc = new Scanner(System.in);
 		int userOption;
 		do {
 			System.out.println("1. List all Employees");
@@ -72,7 +72,7 @@ public class Menu {
 			}
 
 		} while (userOption != 11);
-
+sc.close();
 	}
 
 }
