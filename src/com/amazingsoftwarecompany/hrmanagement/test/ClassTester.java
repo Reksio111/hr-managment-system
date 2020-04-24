@@ -11,7 +11,6 @@ public class ClassTester {
 		Menu menu = new Menu();
 
 		menu.showMenu();
-		//wwwwwww
-
+	
 	}
 }
