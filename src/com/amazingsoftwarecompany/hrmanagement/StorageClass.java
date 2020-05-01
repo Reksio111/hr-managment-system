@@ -19,13 +19,13 @@ public class StorageClass {
 
 	public void getEmployees() {
 
-		if(employees.isEmpty()){
-System.out.println("No employeers to empty");
-		}else{
-		for (Employee e : employees) {
-			System.out.println(e);
+		if (employees.isEmpty()) {
+			System.out.println("No employeers to display");
+		} else {
+			for (Employee e : employees) {
+				System.out.println(e);
+			}
 		}
-	}
 	}
 
 	public List<Department> departments() {
@@ -54,6 +54,7 @@ System.out.println("No employeers to empty");
 	}
 
 	public void displayDevelopers() {
+
 		for (Employee e : employees) {
 			if (e instanceof Developer) {
 				System.out.println(e);
@@ -92,7 +93,19 @@ System.out.println("No employeers to empty");
 			Developer temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
 			employees.add(temp);
 		}
-		keyIn.close();
-
+		System.out.println();
 	}
+	public void removeEmployee(){
+		Scanner keyIn = new Scanner(System.in);
+		System.out.print("Enter employee number to be removed from list:");
+		int id=keyIn.nextInt();
+		for (int i=0;i<employees.size();i++){
+			if(Employee.getNum()==id){
+				employees.remove(id);
+			}else{
+				System.out.print("Employee not found");
+			}
+		}
+	}
+
 }
