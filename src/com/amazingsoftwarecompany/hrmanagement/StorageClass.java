@@ -18,9 +18,14 @@ public class StorageClass {
 	}
 
 	public void getEmployees() {
+
+		if(employees.isEmpty()){
+System.out.println("No employeers to empty");
+		}else{
 		for (Employee e : employees) {
 			System.out.println(e);
 		}
+	}
 	}
 
 	public List<Department> departments() {
@@ -87,6 +92,7 @@ public class StorageClass {
 			Developer temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
 			employees.add(temp);
 		}
+		keyIn.close();
 
 	}
 }
