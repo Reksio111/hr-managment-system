@@ -1,13 +1,13 @@
 package com.amazingsoftwarecompany.hrmanagement;
-
 import java.util.Scanner;
 
 public class Menu {
 
 	public void showMenu() {
 		StorageClass storage = new StorageClass();
-
+		storage.readListFromFile();
 		Scanner sc = new Scanner(System.in);
+
 		int userOption;
 		do {
 			System.out.println("1. List all Employees");
@@ -26,49 +26,51 @@ public class Menu {
 			userOption = sc.nextInt();
 			switch (userOption) {
 
-			case 1:
-				storage.displayEmployees();
-				break;
-			case 2:
-				storage.displayDepartments();
-				break;
-			case 3:
-				storage.addNewEmployee();
-				break;
-			case 4:
-				storage.editEmployeeById();
-				break;
-			case 5:
-				storage.removeEmployee();
-				break;
-			case 6:
-				storage.displayManagers();
-				break;
-			case 7:
-				storage.displayDevelopers();
-				break;
-			case 8:
-				System.out.println("Number of staff in that department is: ");
-				break;
-			case 9:
-				System.out.println("Your pay is; ");
-				break;
-			case 10:
-				System.out.println("In this menu 1-11 you can choice different opions to do different tasks."
-						+ "\nYou just enter in a single number eg 7 and it does that task."
-						+ "\nNumber 1 just prints out all employees. Number 2 prints out all departments."
-						+ "\nNumber 3 lets you add a new employee. number 4 lets you edit an employee info"
-						+ "\nNumber 5 lets you delete an employee. number 6 shows you all managers"
-						+ "\nNumber 7 shows you all your developers. number 8 shows you how many workers in a department"
-						+ "\nNumber 9 shows a employee there pay and number 11 exits the menu"
-						+ "\nHope this was helpfully");
-				break;
-			case 11:
-				System.out.println("Thanks menu is closed");
-				break;
-			default:
-				System.out.println("avabile choice from 1-11");
-				break;
+				case 1:
+					storage.displayEmployees();
+					break;
+				case 2:
+					storage.displayDepartments();
+					break;
+				case 3:
+					storage.addNewEmployee();
+					break;
+				case 4:
+					storage.editEmployeeById();
+					break;
+				case 5:
+					storage.removeEmployee();
+					break;
+				case 6:
+					storage.displayManagers();
+					break;
+				case 7:
+					storage.displayDevelopers();
+					break;
+				case 8:
+					System.out.println("Number of staff in that department is: ");
+					break;
+				case 9:
+					System.out.println("Your pay is; ");
+					break;
+				case 10:
+					System.out.println("In this menu 1-11 you can choice different opions to do different tasks."
+							+ "\nYou just enter in a single number eg 7 and it does that task."
+							+ "\nNumber 1 just prints out all employees. Number 2 prints out all departments."
+							+ "\nNumber 3 lets you add a new employee. number 4 lets you edit an employee info"
+							+ "\nNumber 5 lets you delete an employee. number 6 shows you all managers"
+							+ "\nNumber 7 shows you all your developers. number 8 shows you how many workers in a department"
+							+ "\nNumber 9 shows a employee there pay and number 11 exits the menu"
+							+ "\nHope this was helpfully");
+					break;
+				case 11:
+					System.out.println("Thanks menu is closed");
+					storage.saveToFile();
+				
+					break;
+				default:
+					System.out.println("avabile choice from 1-11");
+					break;
 			}
 
 		} while (userOption != 11);

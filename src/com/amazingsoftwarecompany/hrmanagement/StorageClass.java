@@ -1,15 +1,28 @@
 package com.amazingsoftwarecompany.hrmanagement;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StorageClass {
+public class StorageClass implements Serializable {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -5534690237680248878L;
 	private List<Department> departments = new ArrayList<Department>();;
 	private List<Employee> employees = new ArrayList<Employee>();
-	
+	String fileName = "employees_List.txt";
 
 	public void displayDepartments() {
 		departments();
@@ -90,27 +103,36 @@ public class StorageClass {
 
 			Manager temp = new Manager(title, fname, lname, day, month, year, phone, dept, 1200, 0);
 			employees.add(temp);
+			saveToFile();
+
 		} else if (pos.equalsIgnoreCase("Developer")) {
 			DeveloperLevel lev = DeveloperLevel.LEVEL1;
 			double rate = lev.getRate();
-			Developer temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
+			Employee temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
 			employees.add(temp);
+			saveToFile();
 		}
+
 		System.out.println();
 	}
 
 	public void removeEmployee() {
 		Scanner keyIn = new Scanner(System.in);
+		boolean emplFound = false;
 		System.out.print("Enter employee number:");
 		int num = keyIn.nextInt();
 
 		for (int i = 0; i < employees.size(); i++) {
 			if (num == employees.get(i).getEmployeeId()) {
+				emplFound = true;
 				employees.remove(i);
 			}
 		}
-		for (Employee e : employees) {
-			System.out.println(e);
+		if (emplFound) {
+			System.out.println("Employee removed from the database sucesfully");
+
+		} else {
+			System.out.println("Given id not extists in the database");
 		}
 	}
 
@@ -122,7 +144,7 @@ public class StorageClass {
 		for (Employee emp : employees) {
 			employeeFound = true;
 			if (id == emp.getEmployeeId()) {
-				
+
 				Employee temp = emp;
 				Name tempN = emp.getName();
 				System.out.print("Enter new title:");
@@ -131,7 +153,7 @@ public class StorageClass {
 				String lname = keyIn.nextLine();
 				System.out.print("Enter new phone number:");
 				String phone = keyIn.nextLine();
-				
+
 				if (emp instanceof Manager) {
 					Manager tempM = (Manager) emp;
 					System.out.print("Enter new wage:");
@@ -164,10 +186,46 @@ public class StorageClass {
 			}
 			if (employeeFound) {
 				System.out.println("Employee details updated sucessfully\n");
+
 			} else {
-				System.out.println("Employee with given name not found...\n");
+				System.out.println("Employee with given number not found...\n");
 			}
 		}
-		keyIn.close();
+	}
+
+	public void saveToFile() {
+		try {
+
+			FileOutputStream saveToFile = new FileOutputStream(fileName);
+			ObjectOutputStream out = new ObjectOutputStream(saveToFile);
+			out.writeInt(employees.size());
+			for (Employee empl : employees) {
+				out.writeObject(empl);
+			}
+			out.close();
+			System.out.println("The file overewritten sucessfully");
+		} catch (IOException error) {
+			error.toString();
+		}
+	}
+
+	public void readListFromFile() {
+
+		try {
+			FileInputStream fileInput = new FileInputStream(fileName);
+			ObjectInputStream objectStream = new ObjectInputStream(fileInput);
+			int count = objectStream.readInt();
+			if (count > 0) {
+				for (int i = 0; i < count; i++) {
+					employees.add((Employee) objectStream.readObject());
+				}
+			}
+			objectStream.close();
+		} catch (ClassNotFoundException error) {
+			error.toString();
+		} catch (IOException error) {
+			error.toString();
+		}
+
 	}
 }
