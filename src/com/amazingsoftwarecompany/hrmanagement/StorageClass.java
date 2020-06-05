@@ -1,10 +1,7 @@
 package com.amazingsoftwarecompany.hrmanagement;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,10 +16,10 @@ public class StorageClass implements Serializable {
 	/**
 	 *
 	 */
-	private static final long serialVersionUID = -5534690237680248878L;
+	private static final long serialVersionUID = 1L;
 	private List<Department> departments = new ArrayList<Department>();;
 	private List<Employee> employees = new ArrayList<Employee>();
-	String fileName = "employees_List.txt";
+	private static String fileName = "employees_List.txt";
 
 	public void displayDepartments() {
 		departments();
@@ -103,14 +100,14 @@ public class StorageClass implements Serializable {
 
 			Manager temp = new Manager(title, fname, lname, day, month, year, phone, dept, 1200, 0);
 			employees.add(temp);
-			saveToFile();
+			saveEmployeeToFile(temp);
 
 		} else if (pos.equalsIgnoreCase("Developer")) {
 			DeveloperLevel lev = DeveloperLevel.LEVEL1;
 			double rate = lev.getRate();
 			Employee temp = new Developer(title, fname, lname, day, month, year, phone, dept, lev, rate);
 			employees.add(temp);
-			saveToFile();
+			saveEmployeeToFile(temp);
 		}
 
 		System.out.println();
@@ -193,39 +190,44 @@ public class StorageClass implements Serializable {
 		}
 	}
 
-	public void saveToFile() {
+	public void saveEmployeeToFile(Employee empl) {
 		try {
-
 			FileOutputStream saveToFile = new FileOutputStream(fileName);
 			ObjectOutputStream out = new ObjectOutputStream(saveToFile);
-			out.writeInt(employees.size());
-			for (Employee empl : employees) {
-				out.writeObject(empl);
-			}
+			out.writeObject(empl);
+			out.flush();
 			out.close();
-			System.out.println("The file overewritten sucessfully");
 		} catch (IOException error) {
 			error.toString();
 		}
 	}
 
-	public void readListFromFile() {
-
+	public void readEmployeeFromFile() {
 		try {
 			FileInputStream fileInput = new FileInputStream(fileName);
 			ObjectInputStream objectStream = new ObjectInputStream(fileInput);
-			int count = objectStream.readInt();
-			if (count > 0) {
-				for (int i = 0; i < count; i++) {
-					employees.add((Employee) objectStream.readObject());
-				}
-			}
+			Employee temp = (Employee) objectStream.readObject();
+			employees.add(temp);
 			objectStream.close();
-		} catch (ClassNotFoundException error) {
-			error.toString();
-		} catch (IOException error) {
-			error.toString();
-		}
 
+		} catch (IOException | ClassNotFoundException error) {
+			error.toString();
+		} 
+	}
+	public static void writeEmployeeListToFile(List<Employee> employees) {
+		try {
+			FileOutputStream saveToFile = new FileOutputStream(fileName);
+				ObjectOutputStream out = new ObjectOutputStream(saveToFile);
+
+				for(Employee emp:employees){
+					out.writeObject(emp);
+				}
+				out.writeObject(null);
+				out.close();
+			
+			}catch(IOException ex){
+				System.out.println("Cannot write" );
+				ex.printStackTrace();
+			}
 	}
 }

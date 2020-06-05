@@ -1,9 +1,14 @@
 package com.amazingsoftwarecompany.hrmanagement;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Employee implements Payable{
+public abstract class Employee implements Payable, Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private static int num = 1;
 	private int employeeId;
 	private Name name;

@@ -65,7 +65,7 @@ public class Menu {
 					break;
 				case 11:
 					System.out.println("Thanks menu is closed");
-					storage.saveToFile();
+					//storage.saveToFile();
 				
 					break;
 				default:
